@@ -1,3 +1,26 @@
+
+Simple application built in EXT JS. 
+
+********App is not finished, because currently it is not possible to delete or insert users into grid. *******
+*** Add Record form needs to be fully implemented*****
+
+VERSION 0.01
+
+Technology: 
+EXT JS 
+
+Used:
+REST proxy, with public API endpoint .
+
+Model, store, MainController, List all customized to custom measure.
+
+COLUMNS: 
+Avatar: thumbnail picture, (render from url)
+Name column displays FULL NAME.  
+Active column is by default check.. 
+Action column, has two icons, edit and delete. 
+
+
 # MyApp
 
 This folder is primarily a container for the top-level pieces of the application.
