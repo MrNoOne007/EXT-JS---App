@@ -9,12 +9,13 @@ Ext.define('MyApp.view.main.MainController', {
 
     alias: 'controller.main',
 
-    onItemSelected: function (sender, record, data) {
-        Ext.toast('You clicked on' + " " + data);
-    },
+     onItemSelected: function (sender, record) {
+        Ext.toast('You clicked on' + " " + record.get('FullName'));
+    },  
 
-    OnEdit: function (sender, record, data, ) {
-        Ext.Msg.alert('Edit', 'Edit' + " " + record);
+    OnEdit: function (grid, rowId) {
+        var record = grid.getStore().getAt(rowId);
+        Ext.Msg.alert('Edit', 'Edit' + " " + record.get('FullName'));
 
     },
     
