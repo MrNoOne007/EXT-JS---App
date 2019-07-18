@@ -17,12 +17,12 @@ Ext.define('MyApp.view.main.MainController', {
         Ext.Msg.alert('Edit', 'Edit' + " " + record);
 
     },
-
-    OnDelete: function (sender, record, data) {
-       
-        Ext.Msg.confirm('Delete Changes', 'Do you want to delete' + " " + record, function (choice) {
+    
+    OnDelete: function (grid, rowId) {
+        var record = grid.getStore().getAt(rowId);
+        Ext.Msg.confirm('Delete Changes', 'Do you want to delete' + " " + record.get('FullName'), function (choice) {
             if (choice === 'yes') {
-                var store = Ext.getStore('store.Personnel');
+                var store = grid.getStore('id-gridData');
                 console.log(store)
                 store.remove(record);
 
@@ -30,40 +30,57 @@ Ext.define('MyApp.view.main.MainController', {
         })
     },
 
-    AddRecord: function (sender, record) {
+ 
+    AddRecord: function (grid, rowId, record) {
         Ext.create('Ext.window.Window', {
-            extend: 'Ext.form.Panel',
-            title: 'Add Person',
-            height: 200,
-            width: 400,
+              title: "Add Person",
+              height: 200,
+              width: 400,
             closeAction: 'hide',
-            closable: false,
-            defaultType: 'textfield',
-            xtype: 'form',
-            items: [{
-                fieldLabel: 'First Name',
-                type: 'String',
-                allowBlank: false
-            }, {
-                fieldLabel: 'Last Name',
-                type: 'String',
-                allowBlank: false
-            }],
+            closable: true,
+           
+              items: [{
+                  xtype:'form',
+                    defaultType: 'textfield',
+                   
+                 items: [{
+                    fieldLabel: 'First Name',
+                        name: 'First Name',
+                        type: 'String',
+                        allowBlank: false
+                    }, {
+                        fieldLabel: 'Last Name',
+                        name: 'Last Name',
+                        type: 'String',
+                        allowBlank: false
+                    }, ],
+                 buttons: [{
+                    text: 'Add',
+                     formBind: true,
+                     disabled: true,
+                     handler: function () {
+                             var grid = this.up('form').getStore();
+                             if (form.isValid()) {
+                                 form.submit({
+                                     success: function (grid, rowId) {
+                                         Ext.Msg.alert('Success', action.result.msg);
+                                         store.remove(record);
+                                     },
+                                 })
 
-            // Reset and Submit buttons
-            buttons: [{
-                text: 'Add',
-                formBind: true,
-                disabled: true,
-                handler: function () {
-                    this.up('form').getForm().submit();
-                }
+                             }
+                        var grid = this.up('form').getStore().submit()
+                     },
+                 }, {
+                         text: 'Close', handler: function () {
+                            this.up('window').close();
+                 }
+                 
+             }],
+        
+              }]
+            
+         }).show();
+        }
+    });
 
-            }, {
-                text: 'Close',
-                handler: function () { this.up('window').close(); }
-
-            }]
-        }).show();
-    }
-});
