@@ -1,8 +1,7 @@
 
 Simple application built in EXT JS. 
 
-********App is not finished, because currently it is not possible to delete or insert users into grid. *******
-*** Add Record form needs to be fully implemented*****
+********App is not finished, because currently it is not possible to insert users into grid. *******
 
 VERSION 0.01
 
