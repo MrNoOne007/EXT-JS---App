@@ -5,6 +5,7 @@ Ext.define('MyApp.store.Personnel', {
     pageSize: null,
 
     model: 'Personnel',
+    storeId: "PersonnelStore",
     proxy: {
         type: 'rest',
         url: 'https://reqres.in/api/users',

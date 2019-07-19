@@ -31,7 +31,8 @@ Ext.define('MyApp.view.main.MainController', {
         })
     },
 
-  AddRecord: function (sender, record, grid) {
+
+   AddRecord: function (sender, record, grid) {
         Ext.create('Ext.window.Window', {
             extend: 'Ext.form',
             title: "Add Person",
@@ -64,14 +65,12 @@ Ext.define('MyApp.view.main.MainController', {
                         console.log('record ', record);
                         var store = Ext.getStore('PersonnelStore');
                         console.log(store);
-                        //var form = this.up('form').grid.getStore();
                         if (form.isValid()) {
                             store.add(record);
-                            close.window();
+                            this.up('window').close();
+                       
                         }
                     },
-
-
                 }, {
                     text: 'Close',
                     handler: function () {
