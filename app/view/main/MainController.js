@@ -32,55 +32,58 @@ Ext.define('MyApp.view.main.MainController', {
     },
 
  
-    AddRecord: function (sender, grid, rowId, record) {
+   AddRecord: function (sender, record, grid) {
         Ext.create('Ext.window.Window', {
-              title: "Add Person",
-              height: 200,
-              width: 400,
+            extend: 'Ext.form',
+            title: "Add Person",
+            height: 200,
+            width: 400,
             closeAction: 'hide',
             closable: true,
-           
-              items: [{
-                  xtype:'form',
-                    defaultType: 'textfield',
-                   
-                 items: [{
+            items: [{
+                xtype: 'form',
+                defaultType: 'textfield',
+                layout: 'anchor',
+                items: [{
                     fieldLabel: 'First Name',
-                        name: 'First Name',
-                        type: 'String',
-                        allowBlank: false
-                    }, {
-                        fieldLabel: 'Last Name',
-                        name: 'Last Name',
-                        type: 'String',
-                        allowBlank: false
-                    }, ],
-                 buttons: [{
+                    name: 'first_name',
+                    type: 'String',
+                    allowBlank: false
+                }, {
+                    fieldLabel: 'Last Name',
+                    name: 'last_name',
+                    type: 'String',
+                    allowBlank: false
+                }, ],
+                buttons: [{
                     text: 'Add',
-                     formBind: true,
-                     disabled: true,
-                     handler: function () {
-                             var grid = this.up('form').getStore();
-                             if (form.isValid()) {
-                                 form.submit({
-                                     success: function (grid, rowId) {
-                                         Ext.Msg.alert('Success', action.result.msg);
-                                         store.remove(record);
-                                     },
-                                 })
-
-                             }
-                     },
-                 }, {
-                         text: 'Close', handler: function () {
+                    formBind: true,
+                    disabled: true,
+                    handler: function () {
+                        let record = this.up('form').getForm().getValues();
+                        let form = this.up('form').getForm();
+                        console.log('record ', record);
+                        var store = Ext.getStore('PersonnelStore');
+                        console.log(store);
+                        if (form.isValid()) {
+                            store.add(record);
                             this.up('window').close();
-                 }
-                 
-             }],
-        
-              }]
-            
-         }).show();
-        }
-    });
+                       
+                        }
+                    },
+
+
+                }, {
+                    text: 'Close',
+                    handler: function () {
+                        this.up('window').close();
+                    }
+
+                }],
+
+            }]
+
+        }).show();
+    }
+});
 
