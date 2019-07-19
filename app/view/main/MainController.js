@@ -32,7 +32,7 @@ Ext.define('MyApp.view.main.MainController', {
     },
 
  
-    AddRecord: function (grid, rowId, record) {
+    AddRecord: function (sender, grid, rowId, record) {
         Ext.create('Ext.window.Window', {
               title: "Add Person",
               height: 200,
@@ -70,7 +70,6 @@ Ext.define('MyApp.view.main.MainController', {
                                  })
 
                              }
-                        var grid = this.up('form').getStore().submit()
                      },
                  }, {
                          text: 'Close', handler: function () {
