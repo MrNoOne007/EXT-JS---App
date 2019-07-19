@@ -31,7 +31,7 @@ Ext.define('MyApp.view.main.MainController', {
         })
     },
 
- 
+
    AddRecord: function (sender, record, grid) {
         Ext.create('Ext.window.Window', {
             extend: 'Ext.form',
@@ -71,8 +71,6 @@ Ext.define('MyApp.view.main.MainController', {
                        
                         }
                     },
-
-
                 }, {
                     text: 'Close',
                     handler: function () {
@@ -86,4 +84,3 @@ Ext.define('MyApp.view.main.MainController', {
         }).show();
     }
 });
-
