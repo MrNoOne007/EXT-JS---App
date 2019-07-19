@@ -1,19 +1,22 @@
 
 Simple application built in EXT JS. 
 
-********App is not finished, because currently it is not possible to insert users into grid. *******
+********App is finished *******
 
-VERSION 0.01
+**Users can be deleted from the grid
+**Added to the grid
 
-Technology: 
+**VERSION 0.03
+
+**Technology: 
 EXT JS 
 
-Used:
+**Used:
 REST proxy, with public API endpoint .
 
-Model, store, MainController, List all customized to custom measure.
+**Model, store, MainController, List all customized to custom measure.
 
-COLUMNS: 
+**COLUMNS: 
 Avatar: thumbnail picture, (render from url)
 Name column displays FULL NAME.  
 Active column is by default check.. 
